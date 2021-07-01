@@ -1,5 +1,3 @@
-package com.luceneMonitor;
-
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -49,12 +47,12 @@ public class PersistenceLuceneMonitor {
 
             Document withFqs = newDoc("id", "g1", "color", "green", "title", "Grass", "customer", "124");
             MatchingQueries<QueryMatch> fqMatch = monitor.match(withFqs, QueryMatch.SIMPLE_MATCHER);
-            System.out.println("2nd document, with filter queries (fqs), will only fetch the query with customer equal to 123, matches count: "+fqMatch.getMatchCount());
+            System.out.println("2nd document, with filter queries (fqs), will only fetch the query with customer equal to 124, matches count: "+fqMatch.getMatchCount());
             fqMatch.getMatches().stream().forEach(m -> System.out.println(m.getQueryId()));
 
             Document withMultiParamFqs = newDoc("id", "g1", "color", "green", "title", "Grass", "query", "sky", "published", "true", "engineer", "aman");
             MatchingQueries<QueryMatch> fqMatchMultiParam = monitor.match(withMultiParamFqs, QueryMatch.SIMPLE_MATCHER);
-            System.out.println("3rd document, with multi filter queries (fqs), will only fetch the query with published equals to true and engineer equal to 1, matches count: "+fqMatchMultiParam.getMatchCount());
+            System.out.println("3rd document, with multi filter queries (fqs), will only fetch the query with published equals to true and engineer equal to aman, matches count: "+fqMatchMultiParam.getMatchCount());
             fqMatchMultiParam.getMatches().stream().forEach(m -> System.out.println(m.getQueryId()));
 
 
